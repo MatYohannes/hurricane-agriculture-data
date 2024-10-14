@@ -20,26 +20,57 @@ def lambda_handler(event, context) :
 
     # Data Lists
     stock_symbols = [
-        "ADM",  # Archer-Daniels-Midland Company
-        "BG",   # Bunge Limited
-        "CTVA", # Corteva, Inc.
-        "NTR",  # Nutrien Ltd.
-        "DE",   # Deere & Company
-        "TSN",  # Tyson Foods, Inc.
-        "CALM", # Cal-Maine Foods, Inc.
-        "LW",   # Lamb Weston Holdings, Inc.
-        "FDP",  # Fresh Del Monte Produce Inc.
-        "SAFM", # Sanderson Farms, Inc.
-        "JBSAY",# JBS S.A.
-        "DOLE", # Dole plc
-        "GIS",  # General Mills, Inc.
-        "BAYRY",# Bayer AG (Monsanto)
-        "CVGW", # Calavo Growers, Inc.
-        "ANDE", # The Andersons, Inc.
-        "ALCO", # Alico, Inc.
-        "WMS",  # Advanced Drainage Systems, Inc.
-        "AVY",  # Avery Dennison Corporation
-        "WMT"  # Walmart Inc.
+    "ADM",   # Archer-Daniels-Midland Company
+    "BG",    # Bunge Limited
+    "CTVA",  # Corteva, Inc.
+    "DE",    # Deere & Company
+    "TSN",   # Tyson Foods, Inc.
+    "MOS",   # Mosaic Company
+    "CF",    # CF Industries Holdings, Inc.
+    "AGCO",  # AGCO Corporation
+    "PPC",   # Pilgrim's Pride Corporation
+    "CALM",  # Cal-Maine Foods, Inc.
+    "INGR",  # Ingredion Incorporated
+    "FDP",   # Fresh Del Monte Produce Inc.
+    "ANDE",  # Andersons, Inc.
+    "LNN",   # Lindsay Corporation
+    "SMG",   # Scotts Miracle-Gro Company
+    "CVGW",  # Calavo Growers, Inc.
+    "DAR",   # Darling Ingredients Inc.
+    "SEB",   # Seaboard Corporation
+    "HRL",   # Hormel Foods Corporation
+    "TSCO",  # Tractor Supply Company
+    "ADM",   # Archer-Daniels-Midland Company
+    "BG",    # Bunge Limited
+    "CAG",   # Conagra Brands, Inc.
+    "MKC",   # McCormick & Company, Incorporated
+    "HOGS",  # Zhongpin Inc.
+    "SYY",   # Sysco Corporation
+    "BRFS",  # BRF S.A.
+    "HAIN",  # Hain Celestial Group, Inc.
+    "MDLZ",  # Mondelez International, Inc.
+    "UL",    # Unilever PLC
+    "KHC",   # Kraft Heinz Company
+    "DAR",   # Darling Ingredients Inc.
+    "JBSAY", # JBS S.A.
+    "CALM",  # Cal-Maine Foods, Inc.
+    "TSN",   # Tyson Foods, Inc.
+    "PFGC",  # Performance Food Group Company
+    "SENEA", # Seneca Foods Corporation
+    "FLO",   # Flowers Foods, Inc.
+    "LANC",  # Lancaster Colony Corporation
+    "POST",  # Post Holdings, Inc.
+    "JVA",   # Coffee Holding Co., Inc.
+    "STKL",  # SunOpta Inc.
+    "SMPL",  # The Simply Good Foods Company
+    "THS",   # TreeHouse Foods, Inc.
+    "UNFI",  # United Natural Foods, Inc.
+    "WW",    # WW International, Inc.
+    "BGS",   # B&G Foods, Inc.
+    "JJSF",  # J&J Snack Foods Corp.
+    "ALCO",  # Alico, Inc.
+    "ANDE",  # The Andersons, Inc.
+    "SEB",   # Seaboard Corporation
     ]
 
     ENCRYPTED = os.environ['ALPHAVANTAGE_API_KEY']  # Retrieved from AWS Secrets Manager
@@ -54,7 +85,7 @@ def lambda_handler(event, context) :
 
     api_key = DECRYPTED
     outputsize = 'full'  # Fetch full data
-    max_api_calls_per_day = 25  # Set limit for API calls
+    max_api_calls_per_day = 55  # Set limit for API calls
     api_calls = 0
 
     for symbol in stock_symbols :
@@ -102,7 +133,7 @@ def lambda_handler(event, context) :
                 logger.error(f"No 'Time Series (Daily)' data found for {symbol}.")
 
             api_calls += 1
-            time.sleep(5)  # Avoid hitting the rate limit (5 calls per minute)
+            time.sleep(5)  # Avoid hitting the rate limit
 
         except requests.exceptions.RequestException as e :
             logger.error(f"Error fetching data for {symbol}: {e}")
