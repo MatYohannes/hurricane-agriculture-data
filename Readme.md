@@ -1,5 +1,9 @@
 # Hurricane Agriculture Data
 
+*** NOTICE ***
+The project is incomplete. The project will be completed by December when October and November 2024 data is analyzed and reviewed.
+***
+
 ## Description
 This project focuses on analyzing the stock market response in the agriculture sector during hurricane seasons, particularly when Category 3, 4, and 5 hurricanes made landfall in southeastern U.S. states (Florida, Georgia, Alabama, Mississippi, Louisiana, South Carolina, North Carolina). By examining historical stock data from 2005 to 2024 and correlating it with major hurricane landfalls, the analysis will highlight how these extreme weather events impacted agricultural companies. 
 
